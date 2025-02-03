@@ -2,7 +2,33 @@
 import Texto from "./Texto.astro";
 ---
 
-<main class="flex flex-col items-center justify-center min-h-screen my-10 p-6">
-  <h1 class="text-6xl font-bold mb-6 uppercase text-[#5c3a1b] drop-shadow-lg">Mi Zuli</h1>
-  <Texto />
-</main>
+<div class="min-h-screen bg-pink-50 relative overflow-hidden">
+  <!-- Corazones animados en el fondo -->
+  {
+    Array.from({ length: 20 }).map((_, i) => (
+      <div
+        class="absolute text-red-400 animate-float opacity-50"
+        style={{
+          left: `${Math.random() * 100}%`,
+          top: `${Math.random() * 100}%`,
+          animationDelay: `${Math.random() * 5}s`,
+          fontSize: `${Math.random() * 2 + 1}rem`,
+        }}
+      >
+        ❤️
+      </div>
+    ))
+  }
+
+  <!-- Carta -->
+  <div class="relative z-10 min-h-screen flex items-center justify-center p-4">
+    <div
+      class="bg-white rounded-lg shadow-xl p-8 max-w-md w-full backdrop-blur-sm bg-opacity-90 transform hover:scale-105 transition-transform duration-300"
+    >
+      <h1 class="text-3xl font-bold text-pink-600 mb-6 text-center">Mi Zuli</h1>
+      <div class="space-y-4 text-gray-700">
+        <Texto />
+      </div>
+    </div>
+  </div>
+</div>
